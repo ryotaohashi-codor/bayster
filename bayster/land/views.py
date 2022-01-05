@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from django.views.generic import ListView, DetailView
+from django.views.generic import ListView, DetailView, CreateView
 
 from .models import Land
 
@@ -12,3 +12,8 @@ class LandListView(ListView):
 class LandDetailView(DetailView):
     model = Land
     template_name = 'land/land_detail.html'
+
+class LandCreateView(CreateView):
+    model = Land
+    template_name = 'land/land_create.html'
+    fields= '__all__'
