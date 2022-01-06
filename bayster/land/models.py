@@ -13,5 +13,14 @@ class Land(models.Model):
   applied_date = models.DateField(auto_now=True)
   STATUS_CHOICE = ((0,'申請中'),(1, '承認'),(2, '却下'))
   status = models.IntegerField(choices=STATUS_CHOICE, default=0)
+
   def __str__(self):
     return self.title
+
+
+class LandReview(models.Model):
+  comment = models.TextField()
+  land = models.OneToOneField(
+    Land,
+    on_delete=models.CASCADE,
+  )
