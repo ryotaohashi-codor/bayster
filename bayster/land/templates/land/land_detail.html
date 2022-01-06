@@ -1,4 +1,85 @@
-{% extends 'base.html' %}
+{% extends 'base.html' %} {% block content %}
+<div class="container bg-light">
+  <div class="py-5 text-center">
+    <h2>案件詳細</h2>
+    <p class="lead">
+      担当者からの申請内容に対し、承認/非承認の判定を行って下さい
+    </p>
+  </div>
+  <div class="row justify-content-center">
+    <div class="col-10 col-md-10">
+      <h4 class="mb-3">案件名：{{object.title}}</h4>
+      <div class="row">
+        <div class="col-md-6 mb-1">
+          <p class="mb-0">・申請日</p>
+          <p>{{object.applied_date|date:"y年n月j日"}}</p>
+        </div>
+      </div>
+      <div class="col-md-6 mb-3">
+        <p class="mb-0">・住所</p>
+        <p>{{object.address}}</p>
+      </div>
+      <div class="col-md-6 mb-3">
+        <p class="mb-0">・土地面積</p>
+        <p>{{object.size}}m<sup>2</sup></p>
+      </div>
+      <div class="col-md-6 mb-3">
+        <p class="mb-0">・買付価格</p>
+        <p>{{object.purchase_price}}万円</p>
+      </div>
+      <div class="col-md-6 mb-3">
+        <p class="mb-0">・想定利益</p>
+        <p>{{object.estimated_profit}}万円</p>
+      </div>
+      <div class="col-md-6 mb-3">
+        <p class="mb-0">・経費</p>
+        <p>{{object.cost}}万円</p>
+      </div>
+      <div class="col-md-6 mb-3">
+        <p class="mb-0">・案件の背景や本件の強み</p>
+        <p>{{object.project_background}}</p>
+      </div>
 
-{% block content %}
-{% endblock content %}
+      <hr class="mb-4" />
+
+      <h4 class="mb-3">案件取り組み方針</h4>
+      <form>
+        <div class="d-block my-3">
+          <div class="custom-control custom-radio">
+            <input
+              id=""
+              name=""
+              type="radio"
+              class="custom-control-input"
+              checked
+              required
+            />
+            <label class="custom-control-label" for="credit">承認</label>
+          </div>
+          <div class="custom-control custom-radio">
+            <input
+              id=""
+              name=""
+              type="radio"
+              class="custom-control-input"
+              required
+            />
+            <label class="custom-control-label" for="debit">非承認</label>
+          </div>
+        </div>
+        <div class="mb-3">
+          <p>コメント</p>
+          <textarea
+            class="form-control"
+            id="exampleFormControlTextarea1"
+            rows="3"
+          ></textarea>
+        </div>
+        <button class="btn btn-primary btn-lg btn-block mb-4" type="submit">
+          回答する
+        </button>
+      </form>
+    </div>
+  </div>
+  {% endblock content %}
+</div>
