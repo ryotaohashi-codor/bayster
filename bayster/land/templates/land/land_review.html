@@ -1,4 +1,14 @@
-{% extends 'base.html' %} {% block content %}
+{% extends 'base.html' %} {% block content %} {% if form.non_field_errors %}
+<ul class="alert alert-danger list-unstyled">
+  <li style="list-style-type: none">
+    <ul class="alert alert-danger list-unstyled">
+      {% for error in form.non_field_errors %}
+      <li>{{ error }}</li>
+    </ul>
+  </li>
+</ul>
+{% endfor %} {% endif %}
+
 <div class="container bg-light">
   <div class="py-5 text-center">
     <h2>案件詳細</h2>

@@ -24,3 +24,6 @@ class LandReview(models.Model):
     Land,
     on_delete=models.CASCADE,
   )
+
+  def __str__(self):
+    return self.land.title

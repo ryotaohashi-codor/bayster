@@ -33,7 +33,7 @@
                     <td>{{item.title}}</td>
                     <td>{{item.address}}</td>
                     <td>{{item.purchase_price}}</td>
-                    <td><span class="badge bg-success">{{item.status}}</span></td>
+                    <td><span class="badge bg-success">{{item.get_status_display}}</span></td>
                   </tr>
                   {% endfor %}
                 </tbody>
