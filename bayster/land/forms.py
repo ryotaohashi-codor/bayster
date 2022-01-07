@@ -3,7 +3,7 @@ from django import forms
 from .models import LandReview
 
 class LandReviewForm(forms.ModelForm):
-    STATUS_CHOICE = ((0,'申請中'),(1, '承認'),(2, '却下'))
+    STATUS_CHOICE = ((1, '承認'),(2, '却下'))
     status = forms.ChoiceField(choices=STATUS_CHOICE)    
     
     def save(self, commit=True):

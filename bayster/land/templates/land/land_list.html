@@ -34,6 +34,7 @@
                     <td>{{item.address}}</td>
                     <td>{{item.purchase_price}}</td>
                     <td><span class="badge bg-success">{{item.get_status_display}}</span></td>
+                    <td><a href="{% url 'land-review' item.pk %}">レビューする</a></td>
                   </tr>
                   {% endfor %}
                 </tbody>
