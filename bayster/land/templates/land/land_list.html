@@ -23,7 +23,9 @@
                     <th>住所</th>
                     <th>仕入金額</th>
                     <th>状況</th>
+                    {% if request.user.is_manager %}
                     <th>レビュー</th>
+                    {% endif %}
                   </tr>
                 </thead>
                 <tbody>
@@ -34,7 +36,9 @@
                     <td>{{item.address}}</td>
                     <td>{{item.purchase_price}}</td>
                     <td><span class="badge bg-success">{{item.get_status_display}}</span></td>
+                    {% if request.user.is_manager %}
                     <td><a href="{% url 'land-review' item.pk %}">レビューする</a></td>
+                    {% endif %}
                   </tr>
                   {% endfor %}
                 </tbody>
