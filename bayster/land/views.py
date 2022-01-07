@@ -10,6 +10,7 @@ from .models import Land, LandReview
 class LandListView(ListView):
     model = Land
     template_name = 'land/land_list.html'
+    ordering = ['-applied_date']
 
 class LandReviewView(CreateView):
     form_class = LandReviewForm
@@ -27,3 +28,4 @@ class LandCreateView(CreateView):
     template_name = 'land/land_create.html'
     fields= ('title', 'address', 'size', 'purchase_price', 'estimated_profit', 'cost', 'project_background')
     success_url = reverse_lazy('land-list')
+
