@@ -1,8 +1,12 @@
-{% extends 'base.html' %}
-
+{% extends 'base.html' %} 
+{% block h1 %}新規案件申請{% endblock %}
 {% block content %}
-<form method='POST'>{% csrf_token %}
-    {{form.as_p}}
-    <input type='submit' value='作成する'>
-</form>
+<div class="container">
+  <form method="POST">{% csrf_token %}
+    <table>
+     {{form.as_table}}
+    </table>
+    <input type="submit" value="作成する" />
+  </form>
+</div>
 {% endblock content %}

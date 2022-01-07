@@ -25,4 +25,5 @@ class LandReviewView(CreateView):
 class LandCreateView(CreateView):
     model = Land
     template_name = 'land/land_create.html'
-    fields= '__all__'
+    fields= ('title', 'address', 'size', 'purchase_price', 'estimated_profit', 'cost', 'project_background')
+    success_url = reverse_lazy('land-list')
