@@ -44,13 +44,13 @@
                     <td>{{item.purchase_price}}円</td>
                     <td>
                       {% if item.status == 0 %}
-                      <span class="badge bg-secondary">
+                      <a href="{% url 'land-list'%}?category=0"><span class="badge bg-secondary">{{item.get_status_display}}</span></a>
                       {% elif item.status == 1 %}
-                      <span class="badge bg-success">
+                      <a href="{% url 'land-list'%}?category=1"><span class="badge bg-success">{{item.get_status_display}}</span></a>
                       {% elif item.status == 2 %}
-                      <span class="badge bg-danger">
+                      <a href="{% url 'land-list'%}?category=2"><span class="badge bg-danger">{{item.get_status_display}}</span></a>
                       {% endif %}
-                      {{item.get_status_display}}</span></td>
+                     </td>
                     {% if request.user.is_manager %}
                     <td><a href="{% url 'land-review' item.pk %}">レビューする</a></td>
                     {% endif %}

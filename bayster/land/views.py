@@ -18,6 +18,13 @@ class LandListView(ListView):
     template_name = 'land/land_list.html'
     ordering = ['-applied_date']
 
+    def get_queryset(self):
+        qs = super().get_queryset()
+        category = self.request.GET.get('category')
+        if category is None:
+            return qs
+        return qs.filter(status=category)
+
 class LandReviewView(LoginRequiredMixin, CreateView):
     form_class = LandReviewForm
     model = LandReview
