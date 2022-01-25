@@ -27,7 +27,7 @@
       <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container-fluid">
           <h1 class="navbar-brand">
-            土地案件管理システム -{% block h1 %}案件詳細・レビュー{% endblock %}-
+            土地案件管理システム -{% block h1 %}{% endblock %}-
           </h1>
           <button
             class="navbar-toggler"
@@ -43,7 +43,7 @@
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0"></ul>
             <!--後から追加を予定しているので残す-->
-            <a class="btn btn-outline-primary">ログイン</a>
+            <a class="btn btn-outline-primary" href="{% url 'login' %}">ログイン</a>
           </div>
         </div>
       </nav>

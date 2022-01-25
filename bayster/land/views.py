@@ -1,3 +1,4 @@
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import render
 from django.urls import reverse_lazy
 from django.views.generic import ListView, CreateView
@@ -16,7 +17,7 @@ class LandListView(ListView):
     template_name = 'land/land_list.html'
     ordering = ['-applied_date']
 
-class LandReviewView(CreateView):
+class LandReviewView(LoginRequiredMixin, CreateView):
     form_class = LandReviewForm
     model = LandReview
     template_name = 'land/land_review.html'
@@ -27,7 +28,7 @@ class LandReviewView(CreateView):
         context['land'] = Land.objects.get(pk=self.kwargs['land_id'])
         return context
 
-class LandCreateView(CreateView):
+class LandCreateView(LoginRequiredMixin, CreateView):
     model = Land
     template_name = 'land/land_create.html'
     fields= ('title', 'address', 'size', 'purchase_price', 'estimated_profit', 'cost', 'project_background')
