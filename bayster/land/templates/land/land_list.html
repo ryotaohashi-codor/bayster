@@ -10,13 +10,8 @@
         {% if messages %}
           <ul class="messages">
             {% for message in messages %}
-            <div class="alert {{ message.tags }} alert-dismissible" role="alert">
-              <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button>
-              {{ message }}
-            </div>
-          {% endfor %}
+              <li class="{{ message.tags }}">{{ message }}</li>
+            {% endfor %}
           </ul>
         {% endif %}
         <div class="col-xl-12">
@@ -47,7 +42,15 @@
                     <td>{{item.title}}</td>
                     <td>{{item.address}}</td>
                     <td>{{item.purchase_price}}</td>
-                    <td><span class="badge bg-success">{{item.get_status_display}}</span></td>
+                    <td>
+                      {% if item.status == 0 %}
+                      <span class="badge bg-secondary">
+                      {% elif item.status == 1 %}
+                      <span class="badge bg-success">
+                      {% elif item.status == 2 %}
+                      <span class="badge bg-danger">
+                      {% endif %}
+                      {{item.get_status_display}}</span></td>
                     {% if request.user.is_manager %}
                     <td><a href="{% url 'land-review' item.pk %}">レビューする</a></td>
                     {% endif %}

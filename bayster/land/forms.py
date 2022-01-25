@@ -38,9 +38,9 @@ class LandForm(forms.ModelForm):
         labels = {
         'title': '案件名',
         'address': '住所',
-        'size': '土地面積',
-        'purchase_price': '想定買付価格',
-        'estimated_profit': '想定利益',
-        'cost': '経費',
+        'size': '土地面積(m2)',
+        'purchase_price': '想定買付価格(円)',
+        'estimated_profit': '想定利益(円)',
+        'cost': '経費(円)',
         'project_background':'案件経緯',
         }  
