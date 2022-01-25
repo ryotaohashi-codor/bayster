@@ -4,7 +4,7 @@ from django.shortcuts import render
 from django.urls import reverse_lazy
 from django.views.generic import ListView, CreateView
 
-from .forms import LandReviewForm
+from .forms import LandReviewForm, LandForm
 from .models import Land, LandReview
 
 import os
@@ -32,7 +32,7 @@ class LandReviewView(LoginRequiredMixin, CreateView):
 class LandCreateView(LoginRequiredMixin, CreateView):
     model = Land
     template_name = 'land/land_create.html'
-    fields= ('title', 'address', 'size', 'purchase_price', 'estimated_profit', 'cost', 'project_background')
+    form_class = LandForm
     success_url = reverse_lazy('land-list')
 
     def form_valid(self, form):

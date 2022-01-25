@@ -1,7 +1,7 @@
 from django import forms
 from django.core.mail import send_mail
 
-from .models import LandReview
+from .models import LandReview, Land
 from user.models import User
 
 class LandReviewForm(forms.ModelForm):
@@ -30,3 +30,17 @@ class LandReviewForm(forms.ModelForm):
     class Meta:
         model = LandReview
         fields = '__all__'
+
+class LandForm(forms.ModelForm):
+    class Meta:
+        model = Land
+        fields= ('title', 'address', 'size', 'purchase_price', 'estimated_profit', 'cost', 'project_background')
+        labels = {
+        'title': '案件名',
+        'address': '住所',
+        'size': '土地面積',
+        'purchase_price': '想定買付価格',
+        'estimated_profit': '想定利益',
+        'cost': '経費',
+        'project_background':'案件経緯',
+        }  
