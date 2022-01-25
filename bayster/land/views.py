@@ -1,9 +1,13 @@
 from django.shortcuts import render
 from django.urls import reverse_lazy
-from django.views.generic import ListView, DetailView, CreateView
+from django.views.generic import ListView, CreateView
 
 from .forms import LandReviewForm
 from .models import Land, LandReview
+
+import os
+from sendgrid import SendGridAPIClient
+from sendgrid.helpers.mail import Mail
 
 # Create your views here.
 
@@ -29,3 +33,6 @@ class LandCreateView(CreateView):
     fields= ('title', 'address', 'size', 'purchase_price', 'estimated_profit', 'cost', 'project_background')
     success_url = reverse_lazy('land-list')
 
+    def form_valid(self, form):
+        form.instance.user = self.request.user
+        return super().form_valid(form)

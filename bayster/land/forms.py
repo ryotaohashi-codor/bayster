@@ -18,7 +18,8 @@ class LandReviewForm(forms.ModelForm):
 
         subject = "案件申請結果"
         message = "案件申請結果を確認して下さい"
-        user = User.objects.get(id=instance.land.id)
+        user = User.objects.get(id=instance.land.user.id)
+        print(user)
         from_email = 'system@mail.com'
         recipient_list = [user.email]
         send_mail(subject, message, from_email, recipient_list)
