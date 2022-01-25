@@ -38,10 +38,10 @@
                 <tbody>
                   {% for item in object_list %}
                   <tr>
-                    <td>{{item.applied_date}}</td>
+                    <td>{{item.applied_date|date:"Y年n月j日"}}</td>
                     <td>{{item.title}}</td>
                     <td>{{item.address}}</td>
-                    <td>{{item.purchase_price}}</td>
+                    <td>{{item.purchase_price}}円</td>
                     <td>
                       {% if item.status == 0 %}
                       <span class="badge bg-secondary">
