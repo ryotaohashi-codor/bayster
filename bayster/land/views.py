@@ -1,3 +1,4 @@
+from django.contrib import messages
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import render
 from django.urls import reverse_lazy
@@ -35,5 +36,6 @@ class LandCreateView(LoginRequiredMixin, CreateView):
     success_url = reverse_lazy('land-list')
 
     def form_valid(self, form):
+        messages.success(self.request, '申請が完了しました')
         form.instance.user = self.request.user
         return super().form_valid(form)
