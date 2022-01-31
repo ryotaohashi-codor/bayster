@@ -2,12 +2,14 @@ from django.contrib import messages
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import render
 from django.urls import reverse_lazy
-from django.views.generic import ListView, CreateView
+from django.views.generic import ListView, CreateView, DetailView
 
 from .forms import LandReviewForm, LandForm
 from .models import Land, LandReview
 
 import os
+from dotenv import load_dotenv
+load_dotenv()
 from sendgrid import SendGridAPIClient
 from sendgrid.helpers.mail import Mail
 
@@ -46,3 +48,12 @@ class LandCreateView(LoginRequiredMixin, CreateView):
         messages.success(self.request, '申請が完了しました')
         form.instance.user = self.request.user
         return super().form_valid(form)
+
+class LandMapView(DetailView):
+    template_name = 'land/land_map.html'
+    model = Land
+    def get_object(self):
+        object = super().get_object()
+        object.key = os.getenv('GOOGLE_MAPS_API_KEY')
+        return object
+        
